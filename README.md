@@ -1,5 +1,42 @@
-# Vue 3 + TypeScript + Vite
+# qx-ui
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A simple qx dashboard demo ui. Provides qx information and can be used as an example for how to call qx-service endpoints
+in your own app.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Prerequisites
+
+This application uses node.js, vue and vite.
+
+You need a curren node and npm version. Easiest way to install is by using  `nvm`.
+For installing options see [here](https://nodejs.org/en/download/package-manager).
+
+The application was tested with the following versions:
+
+```shell
+$ npm -v
+10.8.2
+$ node -v
+v20.18.0
+```
+## Install and run
+
+To install the dependencies and start the app in development mode run:
+
+```shell
+npm install
+npm run dev
+```
+
+Then follow the on-screen instructions, for example:
+
+``` 
+
+  VITE v5.4.9  ready in 210 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+```
+
+
