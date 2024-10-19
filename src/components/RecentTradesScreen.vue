@@ -1,0 +1,33 @@
+<script setup lang="ts">
+import {ref} from 'vue'
+import axios from 'axios'
+import {ROOT_URL_QX_SERVICE} from "@/contants.ts";
+import {Trade} from '@/types'
+import TradesTable from "./TradesTable.vue"
+
+const trades = ref<Trade[]>([])
+
+const errorMessage = ref<string | null>(null)
+
+async function fetchAnalytics() {
+  try {
+    const [t1] = await Promise.all([
+      axios.get(ROOT_URL_QX_SERVICE + '/trades'),
+    ])
+    trades.value = [...t1.data]
+  } catch (error) {
+    errorMessage.value = (error as Error).message
+  }
+}
+fetchAnalytics()
+</script>
+
+<template>
+  <h1 class="heading">Latest trades</h1>
+  <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
+  <TradesTable :trades="trades" :showTrader="true" />
+</template>
+
+<style scoped>
+
+</style>

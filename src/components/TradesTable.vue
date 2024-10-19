@@ -7,15 +7,18 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const quFormat = new Intl.NumberFormat(`en-US`, { minimumFractionDigits: 0, maximumFractionDigits: 0})
-const dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-digit', month: '2-digit', year: '2-digit',
+const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maximumFractionDigits: 0})
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'UTC', day: '2-digit', month: '2-digit', year: '2-digit',
   hour: "numeric",
   minute: "numeric",
-  second: "numeric" })
+  second: "numeric"
+})
 </script>
 
 <template>
   <table class="trades">
+    <thead>
     <tr>
       <th>Asset</th>
       <th>Time (UTC)</th>
@@ -25,9 +28,11 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-d
       <th>Total</th>
       <th>Transaction</th>
     </tr>
+    </thead>
+    <tbody>
     <tr v-for="trade in props.trades" class="trade">
       <td>
-        {{ trade.assetName }}
+        <router-link :to="{ name: 'orderBook', params: { assetIssuer: trade.issuer, assetName: trade.assetName }}">{{ trade.assetName }}</router-link>
         <p class="small">
           {{ trade.issuer }}
         </p>
@@ -53,17 +58,20 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-d
         {{ quFormat.format(trade.price * trade.numberOfShares) }}
       </td>
       <td>
-        <p class="small">
-          Hash : <a :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash">{{ trade.transactionHash }}</a>
+        <p class="smaller">
+          Hash : <a :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash">{{
+            trade.transactionHash
+          }}</a>
         </p>
-        <p class="small">
+        <p class="smaller">
           Taker: <a :href="'https://explorer.qubic.org/network/address/' + trade.taker">{{ trade.taker }}</a>
         </p>
-        <p class="small">
+        <p class="smaller">
           Maker: <a :href="'https://explorer.qubic.org/network/address/' + trade.maker">{{ trade.maker }}</a>
         </p>
       </td>
     </tr>
+    </tbody>
   </table>
 </template>
 
@@ -80,23 +88,9 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-d
 }
 
 .trades th {
-  color: #00161D;
+  color: #101820;
   background-color: #76AFB4;
   font-weight: normal;
-}
-
-.color-green {
-  color: yellowgreen;
-}
-
-.color-red {
-  color: red;
-}
-
-.small {
-  text-align: left;
-  font-size: small;
-  color: white;
 }
 
 </style>

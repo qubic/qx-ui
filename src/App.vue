@@ -4,7 +4,7 @@
 <template>
 
   <div class="header">
-    <a href="/#/">Home</a>&nbsp;|&nbsp;<a href="/#/analytics/overview">Analytics</a>
+    <a href="/#/">Home</a>&nbsp;|&nbsp;<a href="/#/analytics/recentTrades">Recent Trades</a>
   </div><img class="logo" alt="qubic logo" src="/qubic-logo-white.svg" height="32"><br/>
 
   <p>
