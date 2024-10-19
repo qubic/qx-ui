@@ -29,7 +29,6 @@ img.logo {
 
 .footer {
   margin-top: 4rem;
-  //margin-left: 0.5rem;
   width: max-content;
 }
 </style>

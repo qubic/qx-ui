@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref} from 'vue'
 import axios from 'axios'
-import {ROOT_URL_QX_SERVICE} from "@/contants.ts";
+import {ROOT_URL_QX_SERVICE} from "@/constants";
 import {Trade} from '@/types'
 import TradesTable from "./TradesTable.vue"
 
