@@ -6,6 +6,10 @@ h1 {
   color: #B0F9FF;
 }
 
+h2 {
+  color: white;
+}
+
 body {
   font-family: Cousine, menlo, monospace;
   font-size: medium;

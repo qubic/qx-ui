@@ -21,7 +21,7 @@ const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maxim
     <tbody>
       <tr v-for="order in props.orders" class="order">
       <td>
-        <a :href="'https://explorer.qubic.org/network/address/' + order.entityId">{{ order.entityId }}</a>
+        <router-link :to="{ name: 'entity', params: { entity: order.entityId }}">{{ order.entityId }}</router-link>
       </td>
       <td>
         {{ quFormat.format(order.price) }}

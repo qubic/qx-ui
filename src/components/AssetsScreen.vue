@@ -30,7 +30,7 @@ fetchAnalytics()
     <tbody>
     <tr v-for="asset in assets" class="asset">
       <td>
-        <router-link :fallback=false :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">{{asset.name}}</router-link>
+        <router-link :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">{{asset.name}}</router-link>
       </td>
       <td>
         {{ asset.issuer }}

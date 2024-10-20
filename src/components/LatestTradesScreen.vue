@@ -25,7 +25,7 @@ fetchAnalytics()
 <template>
   <h1 class="heading">Latest trades</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  <TradesTable :trades="trades" :showTrader="true" />
+  <TradesTable :trades="trades" />
 </template>
 
 <style scoped>

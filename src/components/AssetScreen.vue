@@ -53,8 +53,4 @@ setInterval(fetchOrders, 10000)
 
 <style scoped>
 
-h2 {
-  color: white;
-}
-
 </style>

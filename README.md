@@ -5,10 +5,8 @@ in your own app.
 
 ## Prerequisites
 
-This application uses node.js, vue and vite.
-
-You need a curren node and npm version. Easiest way to install is by using  `nvm`.
-For installing options see [here](https://nodejs.org/en/download/package-manager).
+This application uses node.js, vue and vite and bootstrapped with `npm create`. Easiest way to install npm is by using  
+`nvm`. For installing options see [here](https://nodejs.org/en/download/package-manager).
 
 The application was tested with the following versions:
 

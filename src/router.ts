@@ -6,6 +6,7 @@ import LatestTradesScreen from '@/components/LatestTradesScreen.vue'
 import AssetScreen from "@/components/AssetScreen.vue";
 import ErrorScreed from '@/components/NotFoundScreen.vue'
 import AssetsScreen from "@/components/AssetsScreen.vue";
+import EntityScreen from "@/components/EntityScreen.vue";
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
   {
     path: '/assets',
     component: AssetsScreen
+  },
+  {
+    name: 'entity',
+    path: '/entity/:entity',
+    component: EntityScreen
   },
   {
     name: 'asset',

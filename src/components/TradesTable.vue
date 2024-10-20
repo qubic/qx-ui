@@ -57,20 +57,16 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', {
       </td>
       <td>
         <p class="smaller">
-          Issuer <a :href="'https://explorer.qubic.org/network/address/' + trade.issuer">{{
-            trade.issuer
-          }}</a>
+          Issuer <a :href="'https://explorer.qubic.org/network/address/' + trade.issuer">{{trade.issuer}}</a>
         </p>
         <p class="smaller">
-          Hash&nbsp;&nbsp; <a :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash">{{
-            trade.transactionHash
-          }}</a>
+          Hash&nbsp;&nbsp; <a :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash">{{trade.transactionHash}}</a>
         </p>
         <p class="smaller">
-          Taker&nbsp; <a :href="'https://explorer.qubic.org/network/address/' + trade.taker">{{ trade.taker }}</a>
+          Taker&nbsp; <router-link :to="{ name: 'entity', params: { entity: trade.taker }}">{{ trade.taker }}</router-link>
         </p>
         <p class="smaller">
-          Maker&nbsp; <a :href="'https://explorer.qubic.org/network/address/' + trade.maker">{{ trade.maker }}</a>
+          Maker&nbsp; <router-link :to="{ name: 'entity', params: { entity: trade.maker }}">{{ trade.maker }}</router-link>
         </p>
       </td>
     </tr>
