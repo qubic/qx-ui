@@ -22,24 +22,34 @@ fetchAnalytics()
 </script>
 
 <template>
-  <h1 class="heading">QX Dashboard</h1>
+  <h1 class="heading">Assets</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  Navigation
-  <ul class="navigation">
-    <li>
-      <router-link to="assets">Assets</router-link>
-    </li>
-    <li>
-      <router-link to="latestTrades">Latest Trades</router-link>
-    </li>
-  </ul>
+  <table class="assets">
+    <thead>
+    </thead>
+    <tbody>
+    <tr v-for="asset in assets" class="asset">
+      <td>
+        <router-link :fallback=false :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">{{asset.name}}</router-link>
+      </td>
+      <td>
+        {{ asset.issuer }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
 </template>
 
 <style scoped>
 
-.navigation li {
-  list-style-type: none;
+.asset {
+  white-space: nowrap;
+  text-align: left;
+}
+
+.assets td {
+  padding: 6px 12px;
 }
 
 </style>

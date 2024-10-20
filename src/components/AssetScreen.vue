@@ -2,25 +2,28 @@
 import {ref} from 'vue'
 import axios from 'axios'
 import {ROOT_URL_QX_SERVICE} from "@/constants";
-import {AssetOrder} from '@/types'
+import {Asset, AssetOrder} from '@/types'
 import AssetOrdersTable from "@/components/AssetOrdersTable.vue";
 import {useRoute} from 'vue-router'
 
 const asks = ref<AssetOrder[]>([])
 const bids = ref<AssetOrder[]>([])
+const assetsList = ref<Asset[]>([])
 
 const errorMessage = ref<string | null>(null)
 
 const route = useRoute()
-let assetName = route.params.assetName
-let assetIssuer = route.params.assetIssuer
+const assetName = route.params.assetName
+const assetIssuer = route.params.assetIssuer
 
 async function fetchOrders() {
   try {
-    const [o1, o2] = await Promise.all([
+    const [a, o1, o2] = await Promise.all([
+      axios.get(ROOT_URL_QX_SERVICE + '/assets'),
       axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/orders/ask'),
       axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/orders/bid'),
     ])
+    assetsList.value = [...a.data]
     asks.value = [...o1.data]
     bids.value = [...o2.data]
   } catch (error) {

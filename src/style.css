@@ -10,12 +10,27 @@ body {
   font-family: Cousine, menlo, monospace;
   font-size: medium;
   line-height: 1.3;
-  background-color: #101820;
-  color: #76AFB4;
+  background-color: black;
+  color: white;
 }
 
 a {
   background-color: #101820;
+}
+
+table {
+  background-color: #101820;
+  border-collapse:separate;
+  border: solid #76AFB4 1px;
+  border-radius:5px;
+  border-spacing: 0;
+}
+
+th {
+  background-color: #76AFB4;
+  color: #00161D;
+  border-radius: 2px;
+  font-weight: normal;
 }
 
 a:link, a:visited {
@@ -39,14 +54,20 @@ a:active {
   color: red;
 }
 
+.info {
+  text-align: left;
+  font-size: medium;
+  color: white;
+}
+
 .smaller {
   text-align: left;
   font-size: smaller;
   color: white;
 }
 
-.small {
-  text-align: left;
-  font-size: x-small;
-  color: white;
-}
+/*.small {*/
+/*  text-align: left;*/
+/*  font-size: x-small;*/
+/*  color: white;*/
+/*}*/

@@ -21,53 +21,56 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', {
     <thead>
     <tr>
       <th>Asset</th>
-      <th>Time (UTC)</th>
-      <th>Type</th>
-      <th>Price</th>
-      <th># Shares</th>
-      <th>Total</th>
-      <th>Transaction</th>
+      <th>Details</th>
+      <th>Total (qu)</th>
+      <th>Information</th>
     </tr>
     </thead>
     <tbody>
     <tr v-for="trade in props.trades" class="trade">
-      <td>
-        <router-link :to="{ name: 'orderBook', params: { assetIssuer: trade.issuer, assetName: trade.assetName }}">{{ trade.assetName }}</router-link>
-        <p class="small">
-          {{ trade.issuer }}
+      <td class="trade">
+        <router-link :to="{ name: 'asset', params: { assetIssuer: trade.issuer, assetName: trade.assetName }}">{{ trade.assetName }}</router-link>
+        <p class="smaller">
+          {{ trade.issuer.slice(0,8) + '...' + trade.issuer.slice(-4) }}
         </p>
       </td>
       <td>
+        <div class="info">
+          <span v-if="!trade.bid" class="color-red">
+            SELL
+          </span>
+          <span v-else class="color-green">
+            BUY
+          </span>
+        </div>
+
+        <div class="info">
+          Time:
         {{ dateFormat.format(new Date(trade.tickTime)).replaceAll(',', '').replaceAll('/', '-') }}
+        </div>
+        <div class="info">Shares: {{ trade.numberOfShares }}</div>
+        <div class="info">Price: {{ quFormat.format(trade.price) }} qu</div>
+
       </td>
-      <td>
-        <span v-if="!trade.bid" class="color-red">
-          SELL
-        </span>
-        <span v-else class="color-green">
-          BUY
-        </span>
-      </td>
-      <td>
-        {{ quFormat.format(trade.price) }}
-      </td>
-      <td>
-        {{ trade.numberOfShares }}
-      </td>
-      <td>
+      <td class="amount">
         {{ quFormat.format(trade.price * trade.numberOfShares) }}
       </td>
       <td>
         <p class="smaller">
-          Hash : <a :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash">{{
+          Issuer <a :href="'https://explorer.qubic.org/network/address/' + trade.issuer">{{
+            trade.issuer
+          }}</a>
+        </p>
+        <p class="smaller">
+          Hash&nbsp;&nbsp; <a :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash">{{
             trade.transactionHash
           }}</a>
         </p>
         <p class="smaller">
-          Taker: <a :href="'https://explorer.qubic.org/network/address/' + trade.taker">{{ trade.taker }}</a>
+          Taker&nbsp; <a :href="'https://explorer.qubic.org/network/address/' + trade.taker">{{ trade.taker }}</a>
         </p>
         <p class="smaller">
-          Maker: <a :href="'https://explorer.qubic.org/network/address/' + trade.maker">{{ trade.maker }}</a>
+          Maker&nbsp; <a :href="'https://explorer.qubic.org/network/address/' + trade.maker">{{ trade.maker }}</a>
         </p>
       </td>
     </tr>
@@ -79,18 +82,14 @@ const dateFormat = new Intl.DateTimeFormat('en-GB', {
 
 .trade {
   white-space: nowrap;
-  /*width: 100%;*/
-  text-align: center;
 }
 
 .trades td {
-  padding: 6px 12px;
+  padding: 4px 12px;
 }
 
-.trades th {
-  color: #101820;
-  background-color: #76AFB4;
-  font-weight: normal;
+.amount {
+  text-align: right;
 }
 
 </style>

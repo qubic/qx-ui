@@ -1,9 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HomeScreen from '@/components/HomeScreen.vue'
-import RecentTradesScreen from '@/components/RecentTradesScreen.vue'
-import OrderBookScreen from "@/components/OrderBookScreen.vue";
+import LatestTradesScreen from '@/components/LatestTradesScreen.vue'
+
+import AssetScreen from "@/components/AssetScreen.vue";
 import ErrorScreed from '@/components/NotFoundScreen.vue'
+import AssetsScreen from "@/components/AssetsScreen.vue";
 
 const routes = [
   {
@@ -11,13 +13,18 @@ const routes = [
     component: HomeScreen,
   },
   {
-    path: '/analytics/recentTrades',
-    component: RecentTradesScreen
+    path: '/latestTrades',
+    component: LatestTradesScreen
   },
   {
-    name: 'orderBook',
-    path: '/oderBook/:assetIssuer/:assetName',
-    component: OrderBookScreen
+    path: '/assets',
+    component: AssetsScreen
+  },
+  {
+    name: 'asset',
+    path: '/issuer/:assetIssuer/asset/:assetName/orders',
+    component: AssetScreen,
+    fallback: false
   },
   {
     path: "/:catchAll(.*)",

@@ -46,8 +46,6 @@ const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maxim
 }
 
 .orders th {
-  color: #101820;
-  background-color: #76AFB4;
   font-weight: normal;
 }
 
