@@ -61,7 +61,7 @@ fetchAnalytics()
 
 .navList li {
   min-width: 200px;
-  padding: 20px 100px;
+  padding: 20px 24px;
   border-bottom: solid #202E3C 1px ;
 }
 

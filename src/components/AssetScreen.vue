@@ -42,18 +42,12 @@ fetchOrders()
   <h1 class="heading">Order Book {{ assetName }}</h1>
   <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
 
-  <ul>
-    <li>
-      <div class="leftAlign">
-        Name: <span class="monoFont">{{ assetName }}</span>
-      </div>
-    </li>
-    <li>
-      <div class="leftAlign grey">
-        Issuer: <span class="smaller monoFont">{{ assetIssuer }}</span>
-      </div>
-    </li>
-  </ul>
+  <div>
+    Name: <span class="monoFont">{{ assetName }}</span>
+  </div>
+  <div class="grey">
+    Issuer: <span class="smaller monoFont">{{ assetIssuer }}</span>
+  </div>
 
   <h3>Bid orders (<span class="color-green">BUY</span>)</h3>
   <AssetOrdersTable :orders="bids"/>

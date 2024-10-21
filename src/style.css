@@ -39,11 +39,12 @@ h3 {
 
 ul {
   list-style: none;
-  padding: 15px 15px;
+  padding: 0 0;
   background-color: #151E27;
   border: solid #202E3C 1px;
   border-radius: 10px;
   display:inline-block;
+  word-wrap:break-word;
 }
 
 body {
@@ -57,7 +58,7 @@ body {
 }
 
 .monoFont {
-  font-family: "Space Grotesk Mono", monospace;;
+  font-family: "Space Grotesk Mono", monospace;
 }
 
 table {
@@ -68,7 +69,7 @@ table {
   border-spacing: 0;
   margin-left: auto;
   margin-right: auto;
-  max-width: 700px;
+  max-width: 675px;
   width: 100%;
 }
 
@@ -78,7 +79,7 @@ table tr:last-child {
 
 th {
   color: #707A8A;
-  padding: 15px 5px;
+  padding: 15px 24px;
   font-weight: normal;
   border-bottom: solid #202E3C 1px;
 }
@@ -87,10 +88,14 @@ table td:first-child {
   text-align: left;
 }
 
+table th:first-child {
+  text-align: left;
+}
+
 td {
   margin: 100px 0;
   border-bottom: solid #202E3C 1px;
-  padding: 15px 5px;
+  padding: 15px 24px;
 }
 
 a:link, a:visited {

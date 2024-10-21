@@ -21,7 +21,6 @@ function abbreviate(identity:string) {
       <th>Asset</th>
       <th>Shares</th>
       <th>Price (qu)</th>
-      <th>Total (qu)</th>
     </tr>
     </thead>
     <tbody>
@@ -39,9 +38,7 @@ function abbreviate(identity:string) {
       </td>
       <td>
         {{ quFormat.format(order.price) }}
-      </td>
-      <td class="amount">
-        {{ quFormat.format(order.price * order.numberOfShares) }}
+        <div v-if="order.numberOfShares > 1" class="grey">{{ quFormat.format(order.price * order.numberOfShares) }}</div>
       </td>
     </tr>
     </tbody>
@@ -49,13 +46,4 @@ function abbreviate(identity:string) {
 </template>
 
 <style scoped>
-
-.order {
-  white-space: nowrap;
-}
-
-.amount {
-  text-align: right;
-}
-
 </style>

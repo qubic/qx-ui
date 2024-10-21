@@ -24,9 +24,9 @@ function abbreviate(identity:string) {
   <table class="trades">
     <thead>
     <tr>
-      <th>Time & Asset</th>
-      <th>Trade Details</th>
-      <th>IDs</th>
+      <th class="leftAlign">Time & Asset</th>
+      <th class="leftAlign">Trade Details</th>
+      <th class="rightAlign">IDs</th>
     </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@ function abbreviate(identity:string) {
         <div>Price: {{ quFormat.format(trade.price) }} qu</div>
         <div>Total: {{ quFormat.format(trade.price * trade.numberOfShares) }} qu</div>
       </td>
-      <td class="rightAlign">
+      <td class="rightAlign smaller">
         <div>
           Taker <router-link class="monoFont" :to="{ name: 'entity', params: { entity: trade.taker }}">{{ abbreviate(trade.taker) }}</router-link>
         </div>

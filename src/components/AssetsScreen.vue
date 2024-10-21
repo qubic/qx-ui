@@ -43,7 +43,7 @@ fetchAnalytics()
 /* Only add border to bottom of <li> */
 .asset {
   min-width: 200px;
-  padding: 20px 10px;
+  padding: 20px 24px;
   border-bottom: solid #202E3C 1px ;
 }
 
