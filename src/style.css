@@ -53,6 +53,7 @@ body {
   background-color: #101820;
   color: white;
   text-align: center;
+  word-wrap:break-word;
 }
 
 .monoFont {
