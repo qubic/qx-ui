@@ -22,14 +22,14 @@ fetchAnalytics()
 </script>
 
 <template>
-  <h1 class="heading">Assets</h1>
+  <h1 class="heading">QX Assets</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
 
   <ul class="assets">
     <li v-for="asset in assets" class="asset">
       <router-link :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
         {{asset.name}}
-        <div class="small">
+        <div class="small grey monoFont">
           {{ asset.issuer }}
         </div>
       </router-link>
@@ -40,21 +40,11 @@ fetchAnalytics()
 
 <style scoped>
 
-/* Container with border and rounded corners */
-.assets {
-  list-style: none;
-  padding-left: 2px;
-  padding-right: 2px;
-  background-color: #101820;
-  border: solid #76AFB4 1px;
-  border-radius: 10px;
-  display:inline-block;
-}
-
 /* Only add border to bottom of <li> */
 .asset {
+  min-width: 200px;
   padding: 20px 10px;
-  border-bottom: solid #76AFB4 1px ;
+  border-bottom: solid #202E3C 1px ;
 }
 
 /* Get rid of the last <li>'s bottom border */
@@ -62,10 +52,10 @@ fetchAnalytics()
   border-bottom: none;
 }
 
-/* remove underline from issuer */
 a:link {
   text-decoration: none;
 }
+
 a:visited {
   text-decoration: none;
 }

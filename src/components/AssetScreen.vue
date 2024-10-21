@@ -34,28 +34,40 @@ async function fetchOrders() {
     errorMessage.value = (error as Error).message
   }
 }
+
 fetchOrders()
 </script>
 
 <template>
   <h1 class="heading">Order Book {{ assetName }}</h1>
-  <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
+  <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
 
-  <p>
-    Asset name: {{ assetName }}
-  </p>
-  <div class="smaller">
-    Asset issuer: {{ assetIssuer }}
-  </div>
+  <ul>
+    <li>
+      <div class="leftAlign">
+        Name: <span class="monoFont">{{ assetName }}</span>
+      </div>
+    </li>
+    <li>
+      <div class="leftAlign grey">
+        Issuer: <span class="smaller monoFont">{{ assetIssuer }}</span>
+      </div>
+    </li>
+  </ul>
 
   <h3>Bid orders (<span class="color-green">BUY</span>)</h3>
-  <AssetOrdersTable :orders="bids" />
+  <AssetOrdersTable :orders="bids"/>
 
   <h3>Ask orders (<span class="color-red">SELL</span>)</h3>
-  <AssetOrdersTable :orders="asks" />
+  <AssetOrdersTable :orders="asks"/>
 
   <h3>Latest trades</h3>
-  <TradesTable :trades="latestTrades.slice(0, 10)" />
+  <div v-if="latestTrades.length > 0">
+    <TradesTable :trades="latestTrades.slice(0, 10)"/>
+  </div>
+  <div v-else>
+    No current trades.
+  </div>
 
 </template>
 

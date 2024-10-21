@@ -22,21 +22,28 @@ fetchAnalytics()
 </script>
 
 <template>
-  <h1 class="heading">QX Dashboard</h1>
-  <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  <h2>Navigation</h2>
-  <ul class="navigation">
-    <li>
-      <router-link to="assets">Assets</router-link>
-    </li>
-    <li>
-      <router-link to="latestTrades">Latest Trades</router-link>
-    </li>
-  </ul>
+  <h1>QX Dashboard</h1>
+  <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
+
+  <p class="text">
+    QX is a decentralized exchange running as a smart contract on the Qubic network. This site provides
+    information about assets, trades and traders.
+  </p>
+
+  <div>
+    <ul class="navList">
+      <li>
+        <router-link to="assets">Assets</router-link>
+      </li>
+      <li>
+        <router-link to="latestTrades">Trades</router-link>
+      </li>
+    </ul>
+  </div>
 
   <h2>Entity Search</h2>
   <p>
-  Show trades and open orders.
+    Show trades and open orders of an entity.
   </p>
   <p>
   <input id="traderSearch" placeholder="Insert 60 characters uppercase identity here..." size="65" type="text" v-model="searchTrader" />
@@ -47,28 +54,40 @@ fetchAnalytics()
 
 <style scoped>
 
-.navigation li {
-  list-style-type: none;
+.text {
+  max-width: 600px;
+  display:inline-block;
+}
+
+.navList li {
+  min-width: 200px;
+  padding: 20px 100px;
+  border-bottom: solid #202E3C 1px ;
+}
+
+.navList li:last-child {
+  border-bottom: none;
 }
 
 #traderSearch {
   padding:3px;
-  border:1px solid #76AFB4;
+  background-color: #151E27;
+  border:1px solid #202E3C;
   font-size: smaller;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
+  color: white;
 }
 
 #traderSearch:focus {
-  border-color: #B0F9FF;
+  border-color: #202E3C;
+  color: white;
 }
 
 #searchButton {
   padding:3px 9px;
-  background: #B0F9FF;
-  border:1px solid #76AFB4;
+  background: #61F0FE;
+  border:1px solid #202E3C;
   cursor:pointer;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 

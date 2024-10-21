@@ -30,7 +30,7 @@ function abbreviate(identity:string) {
         <router-link :to="{ name: 'asset', params: { assetIssuer: order.issuerId, assetName: order.assetName }}">
           {{ order.assetName }}
         </router-link>
-        <div class="smaller">
+        <div class="small monoFont grey">
           {{ abbreviate(order.issuerId) }}
         </div>
       </td>
@@ -52,14 +52,6 @@ function abbreviate(identity:string) {
 
 .order {
   white-space: nowrap;
-}
-
-.orders td {
-  padding: 6px 12px;
-}
-
-.orders th {
-  font-weight: normal;
 }
 
 .amount {

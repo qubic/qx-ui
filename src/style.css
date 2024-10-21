@@ -1,53 +1,104 @@
+/*
+Background color #101820
+For tables bg we use - #151E27
+For tables, or other containers borders we use - #202E3C
+Links, buttons color - #61F0FE
+*/
+
+.navigation {
+  text-align: center;
+}
+
 .header {
-  float: left;
+  /*width: 100%;*/
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+hr {
+  padding: 0 0;
+  border: solid #202E3C 1px;
 }
 
 h1 {
-  color: #B0F9FF;
+  color: white;
 }
 
 h2 {
   color: white;
 }
 
-body {
-  font-family: Cousine, menlo, monospace;
-  font-size: medium;
-  line-height: 1.3;
-  background-color: black;
+h3 {
   color: white;
 }
 
-a {
+ul {
+  list-style: none;
+  padding: 15px 15px;
+  background-color: #151E27;
+  border: solid #202E3C 1px;
+  border-radius: 10px;
+  display:inline-block;
+}
+
+body {
+  font-family: "Space Grotesk", Cousine, menlo, monospace;
+  font-size: medium;
+  line-height: 1.3;
   background-color: #101820;
+  color: white;
+  text-align: center;
+}
+
+.monoFont {
+  font-family: "Space Grotesk Mono", monospace;;
 }
 
 table {
-  background-color: #101820;
+  background-color: #151E27;
   border-collapse:separate;
-  border: solid #76AFB4 1px;
-  border-radius:5px;
+  border: solid #202E3C 1px;
+  border-radius: 10px;
   border-spacing: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  width: 100%;
+}
+
+table tr:last-child {
+  border-bottom: none;
 }
 
 th {
-  background-color: #76AFB4;
-  color: #00161D;
-  border-radius: 2px;
+  color: #707A8A;
+  padding: 15px 5px;
   font-weight: normal;
+  border-bottom: solid #202E3C 1px;
+}
+
+table td:first-child {
+  text-align: left;
+}
+
+td {
+  margin: 100px 0;
+  border-bottom: solid #202E3C 1px;
+  padding: 15px 5px;
 }
 
 a:link, a:visited {
-  color: #B0F9FF;
-}
-
-a.imageLink:hover {
-  background-color: #101820;
+  color: #61F0FE;
 }
 
 a:hover {
   color: #101820;
-  background-color: #76AFB4;
+  background-color: #61F0FE;
 }
 
 a:active {
@@ -62,20 +113,22 @@ a:active {
   color: red;
 }
 
-.info {
-  text-align: left;
-  font-size: medium;
-  color: white;
-}
-
 .smaller {
-  text-align: left;
   font-size: smaller;
-  color: white;
 }
 
 .small {
-  text-align: left;
   font-size: x-small;
-  color: white;
+}
+
+.grey {
+  color: #707A8A;
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+.rightAlign {
+  text-align: right;
 }

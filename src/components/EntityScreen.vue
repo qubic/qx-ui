@@ -49,11 +49,13 @@ fetchAnalytics()
 <template>
 
   <h1>Entity Information</h1>
-  <h2 class="heading">{{ currentTrader }}</h2>
+  <div class="grey monoFont">{{ currentTrader }}</div>
   <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
-  <p class="smaller" >
-    Lookup entity in <a :href="'https://explorer.qubic.org/network/address/' + currentTrader">Qubic Explorer</a>.
-  </p>
+  <div>
+    <div>
+      Lookup entity in <a :href="'https://explorer.qubic.org/network/address/' + currentTrader">Qubic Explorer</a>.
+    </div>
+  </div>
 
   <h3>Open bid orders (<span class="color-green">BUY</span>)</h3>
   <div v-if="bids.length > 0" >
@@ -82,5 +84,4 @@ fetchAnalytics()
 </template>
 
 <style scoped>
-
 </style>

@@ -23,9 +23,11 @@ fetchTrades()
 </script>
 
 <template>
-  <h1 class="heading">Latest trades</h1>
+
+  <h1 class="heading">Latest QX trades</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
   <TradesTable :trades="trades.slice(0, 20)" />
+
 </template>
 
 <style scoped>
