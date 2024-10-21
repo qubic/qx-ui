@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, watch} from 'vue'
+import {ref} from 'vue'
 import axios from 'axios'
 import {ROOT_URL_QX_SERVICE} from "@/constants";
 import {EntityOrder, Trade} from '@/types'
@@ -22,14 +22,6 @@ async function fetchAnalytics() {
     if (trader) {
       await fetchTradesForTrader(trader)
     }
-    watch(
-        () => route.params.entity,
-        async newAddress => {
-          errorMessage = ref<string | null>(null)
-          currentTrader.value = newAddress
-          await fetchTradesForTrader(newAddress)
-        }
-    )
   } catch (error) {
     errorMessage.value = (error as Error).message
   }
@@ -60,7 +52,7 @@ fetchAnalytics()
   <h2 class="heading">{{ currentTrader }}</h2>
   <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
   <p class="smaller" >
-    Lookup in <a :href="'https://explorer.qubic.org/network/address/' + currentTrader">Qubic Explorer</a> (external).
+    Lookup entity in <a :href="'https://explorer.qubic.org/network/address/' + currentTrader">Qubic Explorer</a>.
   </p>
 
   <h3>Open bid orders (<span class="color-green">BUY</span>)</h3>

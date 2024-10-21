@@ -24,32 +24,50 @@ fetchAnalytics()
 <template>
   <h1 class="heading">Assets</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  <table class="assets">
-    <thead>
-    </thead>
-    <tbody>
-    <tr v-for="asset in assets" class="asset">
-      <td>
-        <router-link :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">{{asset.name}}</router-link>
-      </td>
-      <td>
-        {{ asset.issuer }}
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <ul class="assets">
+    <li v-for="asset in assets" class="asset">
+      <router-link :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
+        {{asset.name}}
+        <div class="small">
+          {{ asset.issuer }}
+        </div>
+      </router-link>
+    </li>
+  </ul>
 
 </template>
 
 <style scoped>
 
-.asset {
-  white-space: nowrap;
-  text-align: left;
+/* Container with border and rounded corners */
+.assets {
+  list-style: none;
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: #101820;
+  border: solid #76AFB4 1px;
+  border-radius: 10px;
+  display:inline-block;
 }
 
-.assets td {
-  padding: 6px 12px;
+/* Only add border to bottom of <li> */
+.asset {
+  padding: 20px 10px;
+  border-bottom: solid #76AFB4 1px ;
+}
+
+/* Get rid of the last <li>'s bottom border */
+.assets li:last-child {
+  border-bottom: none;
+}
+
+/* remove underline from issuer */
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
 }
 
 </style>

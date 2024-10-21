@@ -41,6 +41,10 @@ a:link, a:visited {
   color: #B0F9FF;
 }
 
+a.imageLink:hover {
+  background-color: #101820;
+}
+
 a:hover {
   color: #101820;
   background-color: #76AFB4;
@@ -70,8 +74,8 @@ a:active {
   color: white;
 }
 
-/*.small {*/
-/*  text-align: left;*/
-/*  font-size: x-small;*/
-/*  color: white;*/
-/*}*/
+.small {
+  text-align: left;
+  font-size: x-small;
+  color: white;
+}

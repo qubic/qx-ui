@@ -9,7 +9,7 @@ const trades = ref<Trade[]>([])
 
 const errorMessage = ref<string | null>(null)
 
-async function fetchAnalytics() {
+async function fetchTrades() {
   try {
     const [t1] = await Promise.all([
       axios.get(ROOT_URL_QX_SERVICE + '/trades'),
@@ -19,13 +19,13 @@ async function fetchAnalytics() {
     errorMessage.value = (error as Error).message
   }
 }
-fetchAnalytics()
+fetchTrades()
 </script>
 
 <template>
   <h1 class="heading">Latest trades</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  <TradesTable :trades="trades" />
+  <TradesTable :trades="trades.slice(0, 20)" />
 </template>
 
 <style scoped>

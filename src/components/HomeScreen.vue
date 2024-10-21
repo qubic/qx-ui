@@ -36,10 +36,12 @@ fetchAnalytics()
 
   <h2>Entity Search</h2>
   <p>
-  Search trades and open orders. Insert 60 characters identity.
+  Show trades and open orders.
   </p>
-  <input id="traderSearch" size="65" type="text" v-model="searchTrader" />&nbsp;
+  <p>
+  <input id="traderSearch" placeholder="Insert 60 characters uppercase identity here..." size="65" type="text" v-model="searchTrader" />
   <button id="searchButton" @click="$router.push({ name: 'entity', params: { entity: searchTrader }})">Lookup Trader</button>
+  </p>
 
 </template>
 
@@ -52,7 +54,7 @@ fetchAnalytics()
 #traderSearch {
   padding:3px;
   border:1px solid #76AFB4;
-  font-size: medium;
+  font-size: smaller;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
@@ -62,7 +64,7 @@ fetchAnalytics()
 }
 
 #searchButton {
-  padding:6px 15px;
+  padding:3px 9px;
   background: #B0F9FF;
   border:1px solid #76AFB4;
   cursor:pointer;

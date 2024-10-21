@@ -6,7 +6,12 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maximumFractionDigits: 0})
+const quFormat = new Intl.NumberFormat(`en-US`, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+
+function abbreviate(identity:string) {
+    return identity && identity.length > 30 ? identity.slice(0, 10) + '...' + identity.slice(-4) : identity;
+}
+
 </script>
 
 <template>
@@ -14,20 +19,24 @@ const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maxim
     <thead>
     <tr>
       <th>Entity</th>
-      <th>Price</th>
-      <th># Shares</th>
+      <th>Shares</th>
+      <th>Price (qu)</th>
+      <th>Total (qu)</th>
     </tr>
     </thead>
     <tbody>
-      <tr v-for="order in props.orders" class="order">
+    <tr v-for="order in props.orders" class="order">
       <td>
-        <router-link :to="{ name: 'entity', params: { entity: order.entityId }}">{{ order.entityId }}</router-link>
+          <router-link :to="{ name: 'entity', params: { entity: order.entityId }}">{{ abbreviate(order.entityId) }}</router-link>
+      </td>
+      <td>
+        {{ quFormat.format(order.numberOfShares) }}
       </td>
       <td>
         {{ quFormat.format(order.price) }}
       </td>
       <td>
-        {{ order.numberOfShares }}
+        {{ quFormat.format(order.numberOfShares * order.price) }}
       </td>
     </tr>
     </tbody>
@@ -43,10 +52,6 @@ const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maxim
 
 .orders td {
   padding: 6px 12px;
-}
-
-.orders th {
-  font-weight: normal;
 }
 
 </style>
