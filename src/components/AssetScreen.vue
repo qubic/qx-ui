@@ -50,10 +50,20 @@ fetchOrders()
   </div>
 
   <h3>Bid orders (<span class="color-green">BUY</span>)</h3>
-  <AssetOrdersTable :orders="bids"/>
+  <div v-if="bids.length > 0">
+    <AssetOrdersTable :orders="bids"/>
+  </div>
+  <div v-else>
+    No bid orders.
+  </div>
 
   <h3>Ask orders (<span class="color-red">SELL</span>)</h3>
+  <div v-if="asks.length > 0">
   <AssetOrdersTable :orders="asks"/>
+  </div>
+  <div v-else>
+    No ask orders.
+  </div>
 
   <h3>Latest trades</h3>
   <div v-if="latestTrades.length > 0">
