@@ -18,7 +18,9 @@
   <div class="navigation">
     <a href="/#/">Home</a>&nbsp; |
     &nbsp;<router-link to="/assets">Assets</router-link>&nbsp; |
-    &nbsp;<router-link to="/latestTrades">Trades</router-link>
+    &nbsp;<router-link to="/latestTrades">Trades</router-link> |
+    &nbsp;<span class="grey">Transactions</span> |
+    &nbsp;<span class="grey">Charts</span>
   </div><br/>
 
   <p>

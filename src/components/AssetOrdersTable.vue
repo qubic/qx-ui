@@ -9,13 +9,13 @@ const props = defineProps<Props>()
 const quFormat = new Intl.NumberFormat(`en-US`, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
 
 function abbreviate(identity:string) {
-    return identity && identity.length > 30 ? identity.slice(0, 8) + '...' + identity.slice(-4) : identity;
+    return identity && identity.length > 30 ? identity.slice(0, 10) + '...' + identity.slice(-4) : identity;
 }
 
 </script>
 
 <template>
-  <table class="orders">
+  <table>
     <thead>
     <tr>
       <th>Entity</th>
@@ -24,8 +24,8 @@ function abbreviate(identity:string) {
     </tr>
     </thead>
     <tbody>
-    <tr v-for="order in props.orders" class="order">
-      <td class="smaller monoFont">
+    <tr v-for="order in props.orders">
+      <td class="monoFont">
           <router-link :to="{ name: 'entity', params: { entity: order.entityId }}">{{ abbreviate(order.entityId) }}</router-link>
       </td>
       <td>

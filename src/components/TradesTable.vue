@@ -21,7 +21,7 @@ function abbreviate(identity:string) {
 </script>
 
 <template>
-  <table class="trades">
+  <table>
     <thead>
     <tr>
       <th class="leftAlign">Time & Asset</th>
@@ -33,7 +33,7 @@ function abbreviate(identity:string) {
     <tr v-for="trade in props.trades" class="trade">
       <td class="trade">
         <div>
-          {{ dateFormat.format(new Date(trade.tickTime)).replaceAll(',', '').replaceAll('/', '-') }}
+          {{ dateFormat.format(new Date(trade.tickTime)).replaceAll(',', '').replaceAll('/', '.') }}
         </div>
         <div>
           <span v-if="!trade.bid" class="color-red">

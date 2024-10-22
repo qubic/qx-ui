@@ -46,7 +46,7 @@ fetchAnalytics()
     Show trades and open orders of an entity.
   </p>
   <p>
-  <input id="traderSearch" placeholder="Insert 60 characters uppercase identity here..." size="65" type="text" v-model="searchTrader" />
+  <input id="traderSearch" placeholder="Insert 60 characters uppercase identity here..." size="64" type="text" v-model="searchTrader" />
   <button id="searchButton" @click="$router.push({ name: 'entity', params: { entity: searchTrader }})">Lookup Trader</button>
   </p>
 
@@ -76,6 +76,7 @@ fetchAnalytics()
   font-size: smaller;
   border-radius: 3px;
   color: white;
+  max-width: 100%;
 }
 
 #traderSearch:focus {
