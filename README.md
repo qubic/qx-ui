@@ -37,4 +37,8 @@ Then follow the on-screen instructions, for example:
 
 ```
 
+## Package
+
+`npm run build` creates the application package in the `dist` folder for deployment.
+
 
