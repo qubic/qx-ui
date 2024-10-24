@@ -52,7 +52,6 @@ route.name
 
   #content {
     flex: 1;
-    padding: 24px;
     min-height: 100%;
     text-align: center;
   }
