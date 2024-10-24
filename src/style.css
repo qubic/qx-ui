@@ -1,28 +1,11 @@
 /*
-Background color #101820
-For tables bg we use - #151E27
-For tables, or other containers borders we use - #202E3C
-Links, buttons color - #61F0FE
+background: #101820
+container background: #151E27
+containers borders: #202E3C
+Links, buttons color: #61F0FE
+text: white
+secondary text: #707A8A
 */
-
-/*.navigation {*/
-/*  text-align: center;*/
-/*}*/
-
-/*.header {*/
-/*  padding: 20px 0;*/
-/*  text-align: center;*/
-/*  background-color: transparent;*/
-/*}*/
-
-/*.header a:hover {*/
-/*  background-color: transparent;*/
-/*}*/
-
-/*.footer {*/
-/*  text-align: center;*/
-/*  margin-top: 5rem;*/
-/*}*/
 
 body {
   display: flex;
@@ -31,12 +14,13 @@ body {
   font-size: medium;
   line-height: 1.3;
   background-color: #101820;
-  margin-left: auto;
-  margin-right: auto;
   color: white;
   text-align: center;
   word-wrap: break-word;
-  padding: 24px 0;
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+  padding: 0;
+  margin: 0;
 }
 
 h1 {

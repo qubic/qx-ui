@@ -51,8 +51,6 @@ route.name
   }
 
   #content {
-    flex: 1;
-    min-height: 100%;
     text-align: center;
   }
 
