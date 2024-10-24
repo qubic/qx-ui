@@ -5,19 +5,24 @@ For tables, or other containers borders we use - #202E3C
 Links, buttons color - #61F0FE
 */
 
-.navigation {
-  text-align: center;
-}
+/*.navigation {*/
+/*  text-align: center;*/
+/*}*/
 
-.header {
-  padding: 20px 0;
-  text-align: center;
-}
+/*.header {*/
+/*  padding: 20px 0;*/
+/*  text-align: center;*/
+/*  background-color: transparent;*/
+/*}*/
 
-.footer {
-  text-align: center;
-  margin-top: 5rem;
-}
+/*.header a:hover {*/
+/*  background-color: transparent;*/
+/*}*/
+
+/*.footer {*/
+/*  text-align: center;*/
+/*  margin-top: 5rem;*/
+/*}*/
 
 body {
   font-family: "Space Grotesk", Cousine, menlo, monospace;
@@ -29,22 +34,7 @@ body {
   color: white;
   text-align: center;
   word-wrap:break-word;
-}
-
-hr {
-  border: solid #202E3C 1px;
-}
-
-h1 {
-  color: white;
-}
-
-h2 {
-  color: white;
-}
-
-h3 {
-  color: white;
+  padding: 24px 0;
 }
 
 ul {
@@ -80,13 +70,13 @@ table tr:last-child {
 th {
   color: #707A8A;
   font-weight: normal;
-  padding: 15px 12px;
+  padding: 12px 12px;
   border-bottom: solid #202E3C 1px;
 }
 
 td {
   margin: 100px 0;
-  padding: 15px 12px;
+  padding: 12px 12px;
   border-bottom: solid #202E3C 1px;
 }
 

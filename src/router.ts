@@ -10,6 +10,7 @@ import EntityScreen from "@/components/EntityScreen.vue";
 
 const routes = [
   {
+    name: 'home',
     path: '/',
     component: HomeScreen,
   },

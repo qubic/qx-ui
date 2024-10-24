@@ -24,7 +24,7 @@ function abbreviate(identity:string) {
     </tr>
     </thead>
     <tbody>
-    <tr v-for="order in props.orders">
+    <tr v-for="order in props.orders" class="assetOrders">
       <td class="monoFont">
           <router-link :to="{ name: 'entity', params: { entity: order.entityId }}">{{ abbreviate(order.entityId) }}</router-link>
       </td>
@@ -41,5 +41,9 @@ function abbreviate(identity:string) {
 </template>
 
 <style scoped>
+
+.assetOrders {
+  height: 67px;
+}
 
 </style>

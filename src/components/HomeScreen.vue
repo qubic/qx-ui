@@ -25,10 +25,11 @@ fetchAnalytics()
   <h1>QX Dashboard</h1>
   <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
 
-  <p class="text">
+  <div class="description">
     QX is a decentralized exchange running as a smart contract on the Qubic network. This site provides
-    information about assets, trades and traders.
-  </p>
+    information about assets, trades and traders. This is a demo page for QX integration and not the official QX platform.
+    No guarantee can be given for the correctness of the data.
+  </div>
 
   <div>
     <ul class="navList">
@@ -54,9 +55,21 @@ fetchAnalytics()
 
 <style scoped>
 
-.text {
-  max-width: 600px;
-  display:inline-block;
+h1 {
+  margin-top: 24px;
+  margin-bottom: 6px;
+}
+
+h2 {
+  margin-top: 24px;
+  margin-bottom: 6px;
+}
+
+.description {
+  margin: 6px 0;
+  color: #707a8a;
+  max-width: 550px;
+  display: inline-block;
 }
 
 .navList li {
