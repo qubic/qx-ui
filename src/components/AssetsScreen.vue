@@ -25,39 +25,52 @@ fetchAnalytics()
   <h1 class="heading">QX Assets</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
 
-  <ul class="assets">
-    <li v-for="asset in assets" class="asset">
-      <router-link :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
-        {{asset.name}}
+  <div class="flex-container">
+    <router-link v-for="asset in assets" :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
+      <div class="flex-item">
+        <div class="asset-name">
+          {{asset.name}}
+        </div>
         <div class="small grey monoFont">
           {{ asset.issuer }}
         </div>
-      </router-link>
-    </li>
-  </ul>
+      </div>
+    </router-link>
+  </div>
 
 </template>
 
 <style scoped>
 
-/* Only add border to bottom of <li> */
-.asset {
-  min-width: 200px;
-  padding: 20px 24px;
-  border-bottom: solid #202E3C 1px ;
+.flex-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
 }
 
-/* Get rid of the last <li>'s bottom border */
-.assets li:last-child {
-  border-bottom: none;
+.flex-item {
+  border-radius: 12px;
+  margin: 12px;
+  width: 124px;
+  height: 68px;
+  padding: 24px 24px;
+  border: solid #202E3C 1px;
+  background-color: #151E27;
+  font-size: large;
+  font-weight: bold;
+  word-wrap: break-word;
+  align-content: center;
 }
 
-a:link {
+.flex-container a:active, a:link, a:visited, a:hover {
+  background-color: transparent;
   text-decoration: none;
+  color: white;
 }
 
-a:visited {
-  text-decoration: none;
+.asset-name {
+  margin-bottom: 6px;
 }
 
 </style>

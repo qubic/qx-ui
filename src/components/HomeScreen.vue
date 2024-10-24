@@ -26,28 +26,34 @@ fetchAnalytics()
   <div v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</div>
 
   <div class="description">
-    QX is a decentralized exchange running as a smart contract on the Qubic network. This site provides
-    information about assets, trades and traders. This is a demo page for QX integration and not the official QX platform.
-    No guarantee can be given for the correctness of the data.
+    QX is a decentralized exchange running as a smart contract on the Qubic network. This demo site provides
+    information about assets, trades and traders, but it is not the official QX platform.
   </div>
 
-  <div>
-    <ul class="navList">
-      <li>
-        <router-link to="assets">Assets</router-link>
-      </li>
-      <li>
-        <router-link to="latestTrades">Trades</router-link>
-      </li>
-    </ul>
+  <div style="clear: both" />
+
+  <div class="flex-container">
+    <router-link to="assets">
+    <div class="flex-item">
+        <img src="/assets-icon.svg" alt="Assets"/>
+        <div>Assets</div>
+    </div>
+    </router-link>
+    <router-link to="latestTrades">
+      <div class="flex-item">
+        <img src="/trades-icon.svg" alt="Trades"/>
+        <div>Trades</div>
+      </div>
+    </router-link>
   </div>
 
   <h2>Entity Search</h2>
-  <p>
+  <div class="description">
     Show trades and open orders of an entity.
-  </p>
+  </div>
+
   <p>
-  <input id="traderSearch" placeholder="Insert 60 characters uppercase identity here..." size="64" type="text" v-model="searchTrader" />
+  <input id="traderSearch" placeholder="Enter public ID" size="64" type="text" v-model="searchTrader" />
   <button id="searchButton" @click="$router.push({ name: 'entity', params: { entity: searchTrader }})">Lookup Trader</button>
   </p>
 
@@ -57,52 +63,65 @@ fetchAnalytics()
 
 h1 {
   margin-top: 24px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
 h2 {
   margin-top: 24px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
 .description {
-  margin: 6px 0;
+  margin: 12px 0;
   color: #707a8a;
-  max-width: 550px;
+  max-width: 500px;
   display: inline-block;
 }
 
-.navList li {
-  min-width: 200px;
-  padding: 20px 24px;
-  border-bottom: solid #202E3C 1px ;
+.flex-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.navList li:last-child {
-  border-bottom: none;
+.flex-item {
+  border-radius: 12px;
+  margin: 12px 12px;
+  min-width: 180px;
+  padding: 24px 24px;
+  border: solid #202E3C 1px;
+  background-color: #151E27;
+  font-size: large;
+  font-weight: bold;
+}
+
+.flex-container a:active, a:link, a:visited, a:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: white;
 }
 
 #traderSearch {
-  padding:3px;
+  padding: 6px 12px;
   background-color: #151E27;
   border:1px solid #202E3C;
-  font-size: smaller;
-  border-radius: 3px;
-  color: white;
-  max-width: 100%;
+  border-radius: 6px;
+  color: #707a8a;
+  max-width: 330px;
 }
 
 #traderSearch:focus {
-  border-color: #202E3C;
   color: white;
 }
 
 #searchButton {
-  padding:3px 9px;
-  background: #61F0FE;
+  margin-left: 12px;
+  padding: 6px 12px;
+  background: #202E3C;
   border:1px solid #202E3C;
   cursor:pointer;
-  border-radius: 3px;
+  border-radius: 6px;
+  color: #61F0FE;
 }
 
 </style>
