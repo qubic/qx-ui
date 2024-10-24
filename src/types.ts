@@ -27,3 +27,23 @@ export type Trade = {
   price: number
   numberOfShares: number
 }
+
+export type Transaction = {
+  hash: string,
+  amount: number,
+  tick: number,
+  inputType: number,
+  extraData: ExtraData,
+  moneyFlew: boolean,
+}
+
+export type ExtraData = {
+  "@class": string,
+  name: string,
+  issuer: string,
+  price: number, // orders only
+  numberOfShares: number,
+  newOwner: string, // asset transfer only
+  unitOfMeasurement: string, // asset issuance only
+  numberOfDecimalPlaces: number // asset issuance only
+}

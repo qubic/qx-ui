@@ -1,12 +1,13 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HomeScreen from '@/components/HomeScreen.vue'
-import LatestTradesScreen from '@/components/LatestTradesScreen.vue'
+import TradesScreen from '@/components/TradesScreen.vue'
 
 import AssetScreen from "@/components/AssetScreen.vue";
 import ErrorScreed from '@/components/NotFoundScreen.vue'
 import AssetsScreen from "@/components/AssetsScreen.vue";
 import EntityScreen from "@/components/EntityScreen.vue";
+import TransactionsScreen from "@/components/TransactionsScreen.vue";
 
 const routes = [
   {
@@ -15,12 +16,16 @@ const routes = [
     component: HomeScreen,
   },
   {
-    path: '/latestTrades',
-    component: LatestTradesScreen
+    path: '/trades',
+    component: TradesScreen
   },
   {
     path: '/assets',
     component: AssetsScreen
+  },
+  {
+    path: '/transactions',
+    component: TransactionsScreen
   },
   {
     name: 'entity',

@@ -39,7 +39,7 @@ fetchAnalytics()
         <div>Assets</div>
     </div>
     </router-link>
-    <router-link to="latestTrades">
+    <router-link to="trades">
       <div class="flex-item">
         <img src="/trades-icon.svg" alt="Trades"/>
         <div>Trades</div>

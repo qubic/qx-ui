@@ -13,15 +13,15 @@ route.name
   </div>
 
   <div v-if="route.name !== 'home'" id="navigation">
-    <a href="/#/">Home</a>&nbsp; |
+    <router-link :to="{ name: 'home'}">Home</router-link>&nbsp; |
     &nbsp;<router-link to="/assets">Assets</router-link>&nbsp; |
-    &nbsp;<router-link to="/latestTrades">Trades</router-link> |
-    &nbsp;<span class="grey">Transactions</span> |
+    &nbsp;<router-link to="/trades">Trades</router-link> |
+    &nbsp;<router-link to="/transactions">Transactions</router-link> |
     &nbsp;<span class="grey">Charts</span>
   </div>
 
   <div id="content">
-    <router-view :key="$route.fullPath"></router-view>
+    <router-view :key="route.fullPath"></router-view>
   </div>
 
   <div id="footer" class="smaller grey">
