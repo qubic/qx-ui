@@ -6,9 +6,9 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const quFormat = new Intl.NumberFormat(`en-US`, { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+const quFormat = new Intl.NumberFormat(`en-US`, {minimumFractionDigits: 0, maximumFractionDigits: 0})
 
-function abbreviate(identity:string) {
+function abbreviate(identity: string) {
   return identity && identity.length > 30 ? identity.slice(0, 10) + '...' + identity.slice(-4) : identity;
 }
 
@@ -38,7 +38,10 @@ function abbreviate(identity:string) {
       </td>
       <td>
         {{ quFormat.format(order.price) }}
-        <div v-if="order.numberOfShares > 1" class="grey">{{ quFormat.format(order.price * order.numberOfShares) }}</div>
+        <div v-if="order.numberOfShares > 1" class="grey">{{
+            quFormat.format(order.price * order.numberOfShares)
+          }}
+        </div>
       </td>
     </tr>
     </tbody>

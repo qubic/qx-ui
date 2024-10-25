@@ -2,14 +2,16 @@
 import {ref} from 'vue'
 import axios from 'axios'
 import {ROOT_URL_QX_SERVICE} from "@/constants";
-import {EntityOrder, Trade} from '@/types'
+import {EntityOrder, Trade, Transfer} from '@/types'
 import {useRoute} from 'vue-router'
 import EntityOrdersTable from "@/components/EntityOrdersTable.vue";
 import TradesTable from "@/components/TradesTable.vue";
+import TransfersTable from "@/components/TransfersTable.vue";
 
 const asks = ref<EntityOrder[]>([])
 const bids = ref<EntityOrder[]>([])
 const trades = ref<Trade[]>([])
+const transfers = ref<Transfer[]>([])
 
 let errorMessage = ref<string | null>(null)
 const currentTrader = ref<string | string[]>([])
@@ -30,14 +32,16 @@ async function fetchAnalytics() {
 async function fetchTradesForTrader(address:any) {
   try {
     if (address) {
-      const [askOrders, bidOrders, entityTrades] = await Promise.all([
+      const [askOrders, bidOrders, entityTrades, entityTransfers] = await Promise.all([
         axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/asks'),
         axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/bids'),
-        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/trades')
+        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/trades'),
+        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/transfers')
       ])
       asks.value = [...askOrders.data]
       bids.value = [...bidOrders.data]
       trades.value = [...entityTrades.data]
+      transfers.value = [...entityTransfers.data]
     }
   } catch (error) {
     errorMessage.value = (error as Error).message
@@ -57,28 +61,24 @@ fetchAnalytics()
     </div>
   </div>
 
-  <h3>Open bid orders (<span class="color-green">BUY</span>)</h3>
   <div v-if="bids.length > 0" >
+    <h3>Open bid orders</h3>
     <EntityOrdersTable :orders="bids" />
   </div>
-  <div v-else>
-    No open bid orders.
-  </div>
 
-  <h3>Open ask orders (<span class="color-red">SELL</span>)</h3>
   <div v-if="asks.length > 0" >
+    <h3>Open ask orders</h3>
     <EntityOrdersTable :orders="asks" />
   </div>
-  <div v-else>
-    No open ask orders.
-  </div>
 
-  <h3>Recent trades</h3>
   <div v-if="trades.length > 0" >
+    <h3>Trades</h3>
     <TradesTable :trades="trades" />
   </div>
-  <div v-else>
-    No recent trades.
+
+  <div v-if="transfers.length > 0" >
+    <h3>Assets transfers</h3>
+    <TransfersTable :transfers="transfers" />
   </div>
 
 </template>

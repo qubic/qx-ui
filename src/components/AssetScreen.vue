@@ -2,15 +2,16 @@
 import {ref} from 'vue'
 import axios from 'axios'
 import {ROOT_URL_QX_SERVICE} from "@/constants";
-import {Asset, AssetOrder, Trade} from '@/types'
+import {AssetOrder, Trade, Transfer} from '@/types'
 import AssetOrdersTable from "@/components/AssetOrdersTable.vue";
 import {useRoute} from 'vue-router'
 import TradesTable from "@/components/TradesTable.vue";
+import TransfersTable from "@/components/TransfersTable.vue";
 
 const asks = ref<AssetOrder[]>([])
 const bids = ref<AssetOrder[]>([])
-const assetsList = ref<Asset[]>([])
-const latestTrades = ref<Trade[]>([])
+const trades = ref<Trade[]>([])
+const transfers = ref<Transfer[]>([])
 
 const errorMessage = ref<string | null>(null)
 
@@ -20,16 +21,16 @@ const assetIssuer = route.params.assetIssuer
 
 async function fetchOrders() {
   try {
-    const [a, o1, o2, tr] = await Promise.all([
-      axios.get(ROOT_URL_QX_SERVICE + '/assets'),
+    const [askOrders, bidOrders, assetTrades, assetTransfers] = await Promise.all([
       axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/asks'),
       axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/bids'),
-      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/trades')
+      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/trades'),
+      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/transfers')
     ])
-    assetsList.value = [...a.data]
-    asks.value = [...o1.data]
-    bids.value = [...o2.data]
-    latestTrades.value = [...tr.data]
+    asks.value = [...askOrders.data]
+    bids.value = [...bidOrders.data]
+    trades.value = [...assetTrades.data]
+    transfers.value = [...assetTransfers.data]
   } catch (error) {
     errorMessage.value = (error as Error).message
   }
@@ -65,12 +66,20 @@ fetchOrders()
     No ask orders.
   </div>
 
-  <h3>Latest trades</h3>
-  <div v-if="latestTrades.length > 0">
-    <TradesTable :trades="latestTrades.slice(0, 10)"/>
+  <h3>Trades</h3>
+  <div v-if="trades.length > 0">
+    <TradesTable :trades="trades.slice(0, 10)"/>
   </div>
   <div v-else>
-    No current trades.
+    No recent trades.
+  </div>
+
+  <h3>Transfers</h3>
+  <div v-if="transfers.length > 0" >
+    <TransfersTable :transfers="transfers" />
+  </div>
+  <div v-else>
+    No recent transfers.
   </div>
 
 </template>
