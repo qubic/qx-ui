@@ -31,8 +31,8 @@ async function fetchTradesForTrader(address:any) {
   try {
     if (address) {
       const [askOrders, bidOrders, entityTrades] = await Promise.all([
-        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/orders/ask'),
-        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/orders/bid'),
+        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/asks'),
+        axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/bids'),
         axios.get(ROOT_URL_QX_SERVICE + '/entity/' + address.toUpperCase() + '/trades')
       ])
       asks.value = [...askOrders.data]

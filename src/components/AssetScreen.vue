@@ -22,8 +22,8 @@ async function fetchOrders() {
   try {
     const [a, o1, o2, tr] = await Promise.all([
       axios.get(ROOT_URL_QX_SERVICE + '/assets'),
-      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/orders/ask'),
-      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/orders/bid'),
+      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/asks'),
+      axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/bids'),
       axios.get(ROOT_URL_QX_SERVICE + '/issuer/' + assetIssuer + '/asset/' + assetName + '/trades')
     ])
     assetsList.value = [...a.data]

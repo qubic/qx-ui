@@ -1,18 +1,18 @@
 export type Asset = {
-  issuer: string,
+  issuer: string
   name: string
 }
 
 export type AssetOrder = {
-  entityId: string,
-  price: number,
+  entityId: string
+  price: number
   numberOfShares: number
 }
 
 export type EntityOrder = {
-  issuerId: string,
-  assetName: string,
-  price: number,
+  issuerId: string
+  assetName: string
+  price: number
   numberOfShares: number
 }
 
@@ -28,22 +28,35 @@ export type Trade = {
   numberOfShares: number
 }
 
-export type Transaction = {
-  hash: string,
-  amount: number,
-  tick: number,
-  inputType: number,
-  extraData: ExtraData,
-  moneyFlew: boolean,
+export type Transfer = {
+  hash: string
+  source: string
+  amount: number
+  tick: number
+  extraData: TransferExtraData
+  moneyFlew: boolean
 }
 
-export type ExtraData = {
-  "@class": string,
-  name: string,
-  issuer: string,
-  price: number, // orders only
-  numberOfShares: number,
-  newOwner: string, // asset transfer only
-  unitOfMeasurement: string, // asset issuance only
-  numberOfDecimalPlaces: number // asset issuance only
+export type Order = {
+  hash: string
+  source: string
+  amount: number
+  tick: number
+  inputType: number
+  extraData: OrderExtraData
+  moneyFlew: boolean
+}
+
+export type TransferExtraData = {
+  issuer: string
+  name: string
+  newOwner: string
+  numberOfShares: number
+}
+
+export type OrderExtraData = {
+  issuer: string
+  name: string
+  price: number
+  numberOfShares: number
 }

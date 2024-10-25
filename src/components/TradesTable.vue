@@ -30,7 +30,7 @@ function abbreviate(identity:string) {
     </tr>
     </thead>
     <tbody>
-    <tr v-for="trade in props.trades">
+    <tr v-for="trade in props.trades" :key="trade.transactionHash.slice(0,10) + trade.maker.slice(0,10) + trade.price">
       <td>
         <div>
           {{ dateFormat.format(new Date(trade.tickTime)).replaceAll(',', '').replaceAll('/', '.') }}

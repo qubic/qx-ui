@@ -2,19 +2,22 @@
 import {ref} from 'vue'
 import axios from 'axios'
 import {ROOT_URL_QX_SERVICE} from "@/constants";
-import {Transaction} from '@/types'
-import TransactionsTable from "@/components/TransactionsTable.vue";
+import {Order, Transfer} from '@/types'
+import TransfersTable from "@/components/TransfersTable.vue";
 
-const transactions = ref<Transaction[]>([])
+const transfers = ref<Transfer[]>([])
+const orders = ref<Order[]>([])
 
 const errorMessage = ref<string | null>(null)
 
 async function fetchData() {
   try {
-    const [t1] = await Promise.all([
-      axios.get(ROOT_URL_QX_SERVICE + '/transactions'),
+    const [t, o] = await Promise.all([
+      axios.get(ROOT_URL_QX_SERVICE + '/transfers'),
+      axios.get(ROOT_URL_QX_SERVICE + '/orders')
     ])
-    transactions.value = [...t1.data]
+    transfers.value = [...t.data]
+    orders.value = [...o.data]
   } catch (error) {
     errorMessage.value = (error as Error).message
   }
@@ -24,9 +27,10 @@ fetchData()
 
 <template>
 
-  <h1>Latest transactions</h1>
+  <h1>Latest asset transfers</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  <TransactionsTable :transactions="transactions.slice(0, 20)" />
+  <!-- only show money flew 'true' or null -->
+  <TransfersTable :transfers="transfers.filter(t => t.moneyFlew !== false)" />
 
 </template>
 
