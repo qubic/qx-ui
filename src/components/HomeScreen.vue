@@ -49,7 +49,7 @@ fetchAnalytics()
     </router-link>
     <router-link to="transactions">
       <div class="flex-item">
-        <img src="/transactions.png" alt="Transactions"/>
+        <img src="/transactions-icon.svg" alt="Transactions"/>
         <div>Transactions</div>
       </div>
     </router-link>
