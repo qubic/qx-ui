@@ -3,7 +3,9 @@ import {ref} from 'vue'
 import axios from 'axios'
 import {ROOT_URL_QX_SERVICE} from "@/constants";
 import {Asset} from '@/types'
+import {useRouter} from 'vue-router'
 
+const router = useRouter()
 const assets = ref<Asset[]>([])
 const searchTrader = ref<string | null>(null)
 const errorMessage = ref<string | null>(null)
@@ -45,6 +47,12 @@ fetchAnalytics()
         <div>Trades</div>
       </div>
     </router-link>
+    <router-link to="transactions">
+      <div class="flex-item">
+        <img src="/transactions.png" alt="Transactions"/>
+        <div>Transactions</div>
+      </div>
+    </router-link>
   </div>
 
   <h2>Entity Search</h2>
@@ -52,10 +60,10 @@ fetchAnalytics()
     Show trades and open orders of an entity.
   </div>
 
-  <p>
+  <div>
   <input id="traderSearch" placeholder="Enter public ID" size="64" type="text" v-model="searchTrader" />
-  <button id="searchButton" @click="$router.push({ name: 'entity', params: { entity: searchTrader }})">Lookup Trader</button>
-  </p>
+  <button id="searchButton" @click="router.push({ name: 'entity', params: { entity: searchTrader }})">Lookup Trader</button>
+  </div>
 
 </template>
 
@@ -87,12 +95,12 @@ h2 {
 .flex-item {
   border-radius: 12px;
   margin: 12px 12px;
-  min-width: 180px;
+  min-width: 100px;
   padding: 24px 24px;
   border: solid #202E3C 1px;
   background-color: #151E27;
-  font-size: large;
-  font-weight: bold;
+  font-size: medium;
+  font-weight: normal;
 }
 
 .flex-container a:active, a:link, a:visited, a:hover {
@@ -102,12 +110,13 @@ h2 {
 }
 
 #traderSearch {
+  margin: 6px;
   padding: 6px 12px;
   background-color: #151E27;
   border:1px solid #202E3C;
   border-radius: 6px;
   color: #707a8a;
-  max-width: 330px;
+  max-width: 340px;
 }
 
 #traderSearch:focus {
@@ -115,7 +124,7 @@ h2 {
 }
 
 #searchButton {
-  margin-left: 12px;
+  margin: 6px;
   padding: 6px 12px;
   background: #202E3C;
   border:1px solid #202E3C;
