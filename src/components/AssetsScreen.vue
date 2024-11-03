@@ -25,8 +25,23 @@ fetchAnalytics()
   <h1 class="heading">QX Assets</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
 
+  <h2 class="heading">Smart Contract Shares</h2>
   <div class="flex-container">
-    <router-link v-for="asset in assets" :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
+    <router-link v-for="asset in assets.filter(a => a.issuer.startsWith('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))" :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
+      <div class="flex-item">
+        <div class="asset-name">
+          {{asset.name}}
+        </div>
+        <div class="small grey monoFont">
+          {{ asset.issuer }}
+        </div>
+      </div>
+    </router-link>
+  </div>
+
+  <h2 class="heading">Tokens</h2>
+  <div class="flex-container">
+    <router-link v-for="asset in assets.filter(a => !a.issuer.startsWith('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'))" :to="{ name: 'asset', params: { assetIssuer: asset.issuer, assetName: asset.name }}">
       <div class="flex-item">
         <div class="asset-name">
           {{asset.name}}
