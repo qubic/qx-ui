@@ -37,6 +37,13 @@ export type Transfer = {
   moneyFlew: boolean
 }
 
+export type TransferExtraData = {
+  issuer: string
+  name: string
+  newOwner: string
+  numberOfShares: number
+}
+
 export type Order = {
   hash: string
   source: string
@@ -47,16 +54,24 @@ export type Order = {
   moneyFlew: boolean
 }
 
-export type TransferExtraData = {
-  issuer: string
-  name: string
-  newOwner: string
-  numberOfShares: number
-}
-
 export type OrderExtraData = {
   issuer: string
   name: string
   price: number
   numberOfShares: number
+}
+
+export type IssuedAsset = {
+  hash: string
+  source: string
+  amount: number
+  tick: number
+  extraData: IssuedAssetExtraData
+  moneyFlew: boolean
+}
+
+export type IssuedAssetExtraData = {
+  name: string
+  numberOfShares: number
+  numberOfDecimalPlaces: number
 }
