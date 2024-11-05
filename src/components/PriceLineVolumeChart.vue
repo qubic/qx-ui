@@ -1,12 +1,20 @@
 <script setup lang="ts">
 
 import {onMounted, onUnmounted, ref, watch} from "vue";
-import {createChart, SingleValueData} from "lightweight-charts";
+import {
+  ChartOptions,
+  createChart,
+  DeepPartial,
+  IChartApi,
+  ISeriesApi,
+  SingleValueData,
+  SolidColor
+} from "lightweight-charts";
 
 const chartContainer = ref();
-let chart;
-let priceSeries;
-let volumeSeries;
+let chart : IChartApi | null;
+let priceSeries : ISeriesApi<"Line">;
+let volumeSeries : ISeriesApi<"Histogram">;
 
 type Props = {
   priceDataSeries: SingleValueData[]
@@ -16,8 +24,8 @@ const props = defineProps<Props>()
 
 onMounted(() => {
   // Create the Lightweight Charts Instance using the container ref.
-  const chartOptions = {
-    layout: {textColor: '#707A8A', attributionLogo: false, background: {type: 'solid', color: '#151E27'}},
+  const chartOptions : DeepPartial<ChartOptions> = {
+    layout: {textColor: '#707A8A', attributionLogo: false, background: { type: 'solid', color: '#151E27' } as SolidColor},
     rightPriceScale: {
       visible: true,
       borderVisible: false,
@@ -32,7 +40,7 @@ onMounted(() => {
   };
   chart = createChart(chartContainer.value, chartOptions);
 
-  priceSeries = chart.addLineSeries({lineWidth: 2, color: '#61F0FE', priceFormat: { type: 'price', precision: 2, minMove: 0.1 }});
+  priceSeries = chart.addLineSeries({lineWidth: 2, color: '#61F0FE', priceFormat: { type: 'price', precision: 1, minMove: 0.1 }});
   priceSeries.priceScale().applyOptions({
     scaleMargins: {
       // positioning the price scale for the area series
@@ -42,17 +50,16 @@ onMounted(() => {
   })
   priceSeries.setData(props.priceDataSeries);
 
-
   volumeSeries = chart.addHistogramSeries({ // general
     priceFormat: {
       type: 'volume',
     },
     priceScaleId: 'left',
     color: '#707A8A',
-    scaleMargins: {
-      top: 0.75, // highest point distance to top
-      bottom: 0,
-    }
+    // scaleMargins: {
+    //   top: 0.75, // highest point distance to top
+    //   bottom: 0,
+    // } as DeepPartial<PriceScaleOptions>
   })
   volumeSeries.priceScale().applyOptions({ // price scale
     // set the positioning of the volume series
