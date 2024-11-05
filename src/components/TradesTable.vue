@@ -43,7 +43,7 @@ function abbreviate(identity:string) {
             BUY
           </span>
         </div>
-        <router-link :to="{ name: 'asset', params: { assetIssuer: trade.issuer, assetName: trade.assetName }}">{{ trade.assetName }}</router-link>
+        <router-link class="link" :to="{ name: 'asset', params: { assetIssuer: trade.issuer, assetName: trade.assetName }}">{{ trade.assetName }}</router-link>
       </td>
       <td class="leftAlign">
         <div>Shares: {{ quFormat.format(trade.numberOfShares) }}</div>
@@ -61,7 +61,7 @@ function abbreviate(identity:string) {
           Hash <a class="monoFont" :href="'https://explorer.qubic.org/network/tx/' + trade.transactionHash"> {{ abbreviate(trade.transactionHash) }}</a>
         </div>
         <div>
-          Issuer <span class="monoFont">{{ abbreviate(trade.issuer) }}</span>
+          Issuer <router-link class="monoFont" :to="{ name: 'entity', params: { entity: trade.issuer }}">{{ abbreviate(trade.issuer) }}</router-link>
         </div>
       </td>
     </tr>

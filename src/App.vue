@@ -5,18 +5,17 @@ const route = useRoute();
 
 <template>
 
-  <div id="header" class="noDecoration">
+  <div id="header">
     <router-link :to="{ name: 'home'}">
       <img src="/qx-info-logo.svg" alt="qx info logo"/>
     </router-link>
   </div>
 
   <div v-if="route.name !== 'home'" id="navigation">
-    <router-link :to="{ name: 'home'}">Home</router-link>&nbsp; |
-    &nbsp;<router-link to="/assets">Assets</router-link>&nbsp; |
-    &nbsp;<router-link to="/trades">Trades</router-link> |
-    &nbsp;<router-link to="/transactions">Transactions</router-link> |
-    &nbsp;<span class="grey">Charts</span>
+    <router-link :to="{ name: 'home'}">Home</router-link> |
+    <router-link to="/assets">Assets</router-link> |
+    <router-link to="/trades">Trades</router-link> |
+    <router-link to="/transactions">Transactions</router-link>
   </div>
 
   <div id="content">
@@ -50,7 +49,9 @@ const route = useRoute();
   }
 
   #content {
-    text-align: center;
+    height: 100%;
+    max-width: 1100px; /* 1024 is to tight for asset screen */
+    margin: auto;
   }
 
   #footer {

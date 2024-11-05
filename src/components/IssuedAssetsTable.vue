@@ -14,41 +14,35 @@ function abbreviate(identity:string) {
   <table>
     <thead>
     <tr>
-      <th>Asset</th>
-      <th>Issuer</th>
+      <th>Asset / Issuer</th>
       <th>Shares</th>
-      <th>Decimals</th>
       <th class="rightAlign">Details</th>
     </tr>
     </thead>
     <tbody>
-    <tr v-for="transfer in props.issuedAssets" :key="transfer.hash.slice(0,20)">
+    <tr v-for="tx in props.issuedAssets" :key="tx.hash.slice(0,20)">
       <td>
         <div>
-          <router-link :to="{ name: 'asset', params: { assetIssuer: transfer.source, assetName: transfer.extraData.name }}">{{ transfer.extraData.name }}</router-link>
+          <router-link clas="foo" :to="{ name: 'asset', params: { assetIssuer: tx.source, assetName: tx.extraData.name }}">{{ tx.extraData.name }}</router-link>
+        </div>
+        <div class="grey smaller">
+          <router-link class="monoFont" :to="{ name: 'entity', params: { entity: tx.source }}">{{ abbreviate(tx.source) }}</router-link>
         </div>
       </td>
       <td>
         <div>
-          <router-link class="monoFont" :to="{ name: 'entity', params: { entity: transfer.source }}">{{ abbreviate(transfer.source) }}</router-link>
-        </div>
-      </td>
-      <td>
-        <div>
-          {{ quFormat.format(transfer.extraData.numberOfShares) }}
-        </div>
-      </td>
-      <td>
-        <div>
-          {{ quFormat.format(transfer.extraData.numberOfDecimalPlaces) }}
+          {{ quFormat.format(tx.extraData.numberOfShares) }}
         </div>
       </td>
       <td class="smaller">
         <div>
-          Tick <a class="monoFont" :href="'https://explorer.qubic.org/network/tick/' + transfer.tick">{{ transfer.tick }}</a>
+          Decimals: {{ quFormat.format(tx.extraData.numberOfDecimalPlaces) }}
         </div>
         <div>
-          Hash <a class="monoFont" :href="'https://explorer.qubic.org/network/tx/' + transfer.hash"> {{ abbreviate(transfer.hash) }}</a>
+          Tick <a class="monoFont" :href="'https://explorer.qubic.org/network/tick/' + tx.tick">{{ tx.tick }}</a>
+        </div>
+        <div>
+          Hash <a class="monoFont" :href="'https://explorer.qubic.org/network/tx/' + tx.hash"> {{ abbreviate(tx.hash) }}</a>
         </div>
       </td>
     </tr>

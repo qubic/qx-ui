@@ -15,7 +15,7 @@ function abbreviate(identity:string) {
 </script>
 
 <template>
-  <table>
+  <table class="qx-table">
     <thead>
     <tr>
       <th>Entity</th>

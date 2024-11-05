@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import {Transfer} from '@/types'
 type Props = {
   transfers: Transfer[]
@@ -23,10 +24,10 @@ function abbreviate(identity:string) {
     <tr v-for="transfer in props.transfers" :key="transfer.hash.slice(0,20)">
       <td>
         <div>
-          <router-link :to="{ name: 'asset', params: { assetIssuer: transfer.extraData.issuer, assetName: transfer.extraData.name }}">{{ transfer.extraData.name }}</router-link>
+          <router-link class="link" :to="{ name: 'asset', params: { assetIssuer: transfer.extraData.issuer, assetName: transfer.extraData.name }}">{{ transfer.extraData.name }}</router-link>
         </div>
-        <div>
-          <span class="smaller grey monoFont">{{ abbreviate(transfer.extraData.issuer) }}</span>
+        <div class="smaller grey">
+          <router-link class="monoFont" :to="{ name: 'entity', params: { entity: transfer.extraData.issuer }}">{{ abbreviate(transfer.extraData.issuer) }}</router-link>
         </div>
       </td>
       <td>

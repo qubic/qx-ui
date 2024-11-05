@@ -44,22 +44,22 @@ export type TransferExtraData = {
   numberOfShares: number
 }
 
-export type Order = {
-  hash: string
-  source: string
-  amount: number
-  tick: number
-  inputType: number
-  extraData: OrderExtraData
-  moneyFlew: boolean
-}
+// export type Order = {
+//   hash: string
+//   source: string
+//   amount: number
+//   tick: number
+//   inputType: number
+//   extraData: OrderExtraData
+//   moneyFlew: boolean
+// }
 
-export type OrderExtraData = {
-  issuer: string
-  name: string
-  price: number
-  numberOfShares: number
-}
+// export type OrderExtraData = {
+//   issuer: string
+//   name: string
+//   price: number
+//   numberOfShares: number
+// }
 
 export type IssuedAsset = {
   hash: string
@@ -74,4 +74,10 @@ export type IssuedAssetExtraData = {
   name: string
   numberOfShares: number
   numberOfDecimalPlaces: number
+}
+
+export type AveragePrice = {
+  time: string
+  averagePrice: number
+  totalAmount: number
 }

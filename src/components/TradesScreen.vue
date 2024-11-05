@@ -26,7 +26,7 @@ fetchTrades()
 
   <h1>Latest QX trades</h1>
   <span v-if="errorMessage" class="color-red">{{ errorMessage }} Please inform admin!</span>
-  <TradesTable :trades="trades.slice(0, 20)" />
+  <TradesTable :trades="trades.slice(0, 25)" />
 
 </template>
 
