@@ -29,6 +29,7 @@ export type Trade = {
 }
 
 export type Transfer = {
+  tickTime: string
   hash: string
   source: string
   amount: number
@@ -45,6 +46,7 @@ export type TransferExtraData = {
 }
 
 // export type Order = {
+//   tickTime: string
 //   hash: string
 //   source: string
 //   amount: number
@@ -62,6 +64,7 @@ export type TransferExtraData = {
 // }
 
 export type IssuedAsset = {
+  tickTime: string
   hash: string
   source: string
   amount: number

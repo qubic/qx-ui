@@ -5,6 +5,12 @@ type Props = {
 }
 const props = defineProps<Props>()
 const quFormat = new Intl.NumberFormat(`en-US`, { maximumFractionDigits: 0 })
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'UTC', day: '2-digit', month: '2-digit', year: '2-digit',
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric"
+})
 function abbreviate(identity:string) {
   return identity && identity.length > 30 ? identity.slice(0, 10) + '...' + identity.slice(-4) : identity;
 }
@@ -22,6 +28,9 @@ function abbreviate(identity:string) {
     <tbody>
     <tr v-for="tx in props.issuedAssets" :key="tx.hash.slice(0,20)">
       <td>
+        <div>
+          {{ dateFormat.format(new Date(tx.tickTime)).replaceAll(',', '').replaceAll('/', '.') }}
+        </div>
         <div>
           <router-link clas="foo" :to="{ name: 'asset', params: { assetIssuer: tx.source, assetName: tx.extraData.name }}">{{ tx.extraData.name }}</router-link>
         </div>
